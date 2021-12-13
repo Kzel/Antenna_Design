@@ -1,0 +1,26 @@
+; Top Design: "TP2_lib:cell_2:schematic"
+; Netlisted using Hierarchy Policy: "Standard"
+
+Options ResourceUsage=yes UseNutmegFormat=no EnableOptim=no TopDesignName="TP2_lib:cell_2:schematic" DcopOutputNodeVoltages=yes DcopOutputPinCurrents=yes DcopOutputAllSweepPoints=no DcopOutputDcopType=0
+model MSub1 MSUB H=1.58 mm Er=4.4 Mur=1 Cond=5.8E+7 Hu=1e+33 mm T=35 um TanD=0.02045 Rough=0 mm DielectricLossModel=1 FreqForEpsrTanD=1.0 GHz LowFreqForTanD=1.0 kHz HighFreqForTanD=1.0 THz RoughnessModel=2 
+Port:TermG1  N__7 0 Num=1 Z=50 Ohm Noise=yes 
+MLIN2:TL2  N__3 N__6 Subst="MSub1" W=3.081970 mm L=12.25 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+S_Param:SP1 CalcS=yes CalcY=no CalcZ=no GroupDelayAperture=1e-4 FreqConversion=no FreqConversionPort=1 StatusLevel=2 CalcNoise=no SortNoise=0 BandwidthForNoise=1.0 Hz DevOpPtLevel=0 \
+SweepVar="freq" SweepPlan="SP1_stim" OutputPlan="SP1_Output" 
+
+SweepPlan: SP1_stim Start=3.0 GHz Stop=8.0 GHz Step=0.01 GHz 
+
+OutputPlan:SP1_Output \
+      Type="Output" \
+      UseEquationNestLevel=yes \
+      EquationNestLevel=2 \
+      UseSavedEquationNestLevel=yes \
+      SavedEquationNestLevel=2
+
+#load "python","LinearCollapse"
+Component Module="LinearCollapse" Type="ModelExtractor" NetworkRepresentation=2
+MLOC2:TL1  N__8 Subst="MSub1" W=17.4 mm L=11.2 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MLOC2:TL3  N__0 Subst="MSub1" W=3.081970 mm L=6.7197 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 
+MTEE_ADS:Tee1  N__4 N__3 N__0 Subst="MSub1" W1=3.081970 mm W2=3.081970 mm W3=3.081970 mm 
+MSTEP:Step1  N__6 N__8 Subst="MSub1" W1=3.081970 mm W2=17.4 mm 
+MLIN2:TL4  N__7 N__4 Subst="MSub1" W=3.081970 mm L=12.25 mm Wall1=2.5e+28 mm Wall2=2.5e+28 mm Mod=1 

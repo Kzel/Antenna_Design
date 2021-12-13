@@ -1,0 +1,15 @@
+
+hpeesofsim (*) 531.update1.0 Oct 31 2020, MINT version 5
+    (64-bit windows built: Sat Oct 31, 2020 17:36:43 +0000)
+
+
+SP SP1[1] <TP2_lib:cell_1:schematic>   freq=(3 GHz->8 GHz)
+Warning detected by hpeesofsim during SP analysis 'SP1'.
+    Value(0.055195) <= MinLegalValue(0.100000) OR Value >= MaxLegalValue(10.000000) for 'W2/W1' in `Step2'
+
+
+
+Resource usage:
+  Heap Count = 158 Kitems  Size = 45 MB  Overhead = 2 MB   Total = 47 MB
+  Total stopwatch time     =     0.53 seconds.
+

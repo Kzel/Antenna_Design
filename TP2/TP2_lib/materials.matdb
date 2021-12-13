@@ -1,0 +1,11 @@
+<!DOCTYPE Materials>
+<Materials>
+    <Conductors>
+        <Conductor electron_path="" tc1="" parmtype="1" thermal_conductivity_in_z="" imag="" tnom="" mur_real="1" thermal_conductivity="" mur_imag="" real="5.8e7 Siemens/m" name="Cuivre" heat_capacity="" tc2=""/>
+    </Conductors>
+    <Dielectrics>
+        <Dielectric electron_path="" er_real="4.4" loss_type="1" lowfreq="1 KHz" er_imag="-0.09" valuefreq="1 GHz" thermal_conductivity_in_z="" highfreq="1 THz" mur_real="" thermal_conductivity="" mur_imag="" er_loss="0.02045" name="Dielectric_1" heat_capacity=""/>
+    </Dielectrics>
+    <Semiconductors/>
+    <roughness/>
+</Materials>

@@ -1,0 +1,20 @@
+
+hpeesofsim (*) 531.update1.0 Oct 31 2020, MINT version 5
+    (64-bit windows built: Sat Oct 31, 2020 17:36:43 +0000)
+
+Warning detected by hpeesofsim during netlist flattening.
+    Touchstone file parser warning:
+    Line - 27, Column - 23 : expected end-of-line termination before end-of-file
+    File: `D:/Download/AT42085.s2p'.
+
+SP SP1[1] <MyLibrary1_lib:cell_1:schematic>   freq=(1 GHz->6 GHz)
+Warning detected by hpeesofsim during SP analysis `SP1'.
+    Noise data in the Touchstone file `D:/Download/AT42085.s2p'
+    does not cover the current value of `freq'. Therefore, if noise
+    simulation is requested the data will be obtained by extrapolation.
+
+
+Resource usage:
+  Heap Count = 164 Kitems  Size = 44 MB  Overhead = 2 MB   Total = 47 MB
+  Total stopwatch time     =     0.47 seconds.
+
