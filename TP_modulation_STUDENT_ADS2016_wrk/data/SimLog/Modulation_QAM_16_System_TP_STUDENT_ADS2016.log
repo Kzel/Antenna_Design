@@ -1,0 +1,40 @@
+
+hpeesofsim (*) 450.shp Jan 21 2016, MINT version 4
+    (64-bit windows built: 01/21/16 15:34:19)
+Copyright 1995 - 2015 Keysight Technologies, 1989-2016.
+
+Warning detected by hpeesofsim in topology check during circuit set up.
+    Number of nodes with only one device attached (topology corrected): 13
+    Number of nodes with no DC path to ground (topology corrected): 8
+
+
+HB Env1[1] <TP_modulation_STUDENT_2012_lib:Modulation_QAM_16_System_TP_STUDENT_ADS2016:schematic>
+Pt DC convergence is used.
+    Number of tones:   3.
+    Number of frequencies:   14.
+    Number of time samples:  256.
+    Number of HB equations (problem size): 2673.
+    Auto mode: off.
+    Convergence mode: Fast.
+    Linear solver: direct.
+------------------------------------------------------------------------
+Newton solver:				
+Iter	KCL residual	Sol update
+------------------------------------------------------------------------
+0.0*	10.0237 mA               
+1.0 	91.7085 uA               
+1.1 	1.73472 aA  	23.8524 aV   
+
+HB Env1[1] <TP_modulation_STUDENT_2012_lib:Modulation_QAM_16_System_TP_STUDENT_ADS2016:schematic>   time=(0 s->6.4 ms)
+.
+COMPONENT : LINK1.CMP1 envelope bandwidth characterization
+F=37 Param=2 Pts=2
+F=37 Param=1 Pts=2
+
+COMPONENT : LPF1.CMP85 envelope bandwidth characterization
+F=0 Param=2 Pts=81
+................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+
+Resource usage:
+  Total stopwatch time     =    11.84 seconds.
+

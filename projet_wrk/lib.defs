@@ -1,0 +1,3 @@
+INCLUDE $HPEESOF_DIR/oalibs/analog_rf.defs
+DEFINE projet_lib projet_lib
+ASSIGN projet_lib libMode shared

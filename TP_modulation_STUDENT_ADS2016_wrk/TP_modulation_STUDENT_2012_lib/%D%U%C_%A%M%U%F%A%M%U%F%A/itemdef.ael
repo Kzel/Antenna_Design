@@ -1,0 +1,3 @@
+create_item("DUC_AMUFAMUFA","DUC_AMUFAMUFA","Up_Converter",16,-1,NULL,"Component Parameters",NULL,"%43?global %;%d:%t %# %44?0%:%31?%C%:_net%c%;%;%e %b%r%8?%29?%:%30?%p %:%k%?[%1i]%;=%p %;%;%;%e%e","DUC_AMUFAMUFA","%t%b%r%38?%:\n%39?all_parm%A%:%30?%s%:%k%?[%1i]%;=%s%;%;%;%e%e%;","DUC_AMUFAMUFA",3,NULL,0,
+create_parm("Filt1_Freq","RF Frequency",68608,"StdFormSet",0,prm("StdForm")),
+create_parm("Filt2_Freq","RF Frequency",68608,"StdFormSet",0,prm("StdForm")));

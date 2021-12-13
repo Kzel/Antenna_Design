@@ -1,0 +1,16 @@
+
+hpeesofsim (*) 470.shp Oct 16 2017, MINT version 4
+    (64-bit windows built: Tue Oct 17, 2017 04:23:43 +0000)
+Copyright 1989 - 2017 Keysight Technologies.
+
+
+5 spare nodes and 4 spare devices are removed.
+The details can be found in file 'C:\Users\28613352\Desktop\Ligne_Antenne\projet_wrk\data\.\cell_2_data\spare_removal.txt'.
+
+
+SP SP1[1] <projet_lib:cell_2:schematic>   freq=(1 GHz->15 GHz)
+
+
+Resource usage:
+  Total stopwatch time     =     0.36 seconds.
+

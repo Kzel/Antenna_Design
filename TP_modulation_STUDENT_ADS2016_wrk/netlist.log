@@ -1,0 +1,67 @@
+; Top Design: "TP_modulation_STUDENT_2012_lib:Modulation_QAM_16_TP_STUDENT_ADS2016:schematic"
+; Netlisted using Hierarchy Policy: "Standard"
+
+Options ResourceUsage=yes UseNutmegFormat=no EnableOptim=no TopDesignName="TP_modulation_STUDENT_2012_lib:Modulation_QAM_16_TP_STUDENT_ADS2016:schematic" DcopOutputNodeVoltages=yes DcopOutputPinCurrents=yes DcopOutputAllSweepPoints=no DcopOutputDcopType=0
+
+global IF_Freq= 88 MHz
+global IFpower_dBm=-10
+global SymbolRate=25KHz
+global tstep=1/(16*SymbolRate)
+aele V_out=mix(Vout,{1});time_out=time;SymbolRate_out= 25KHz;
+
+HB:Env1 Freq[1]=IF_Freq \
+ Order[1]=1 \
+  MaxOrder=1 StatusLevel=2 FundOversample=2 MaxIters=10 SamanskiiConstant=2 \
+ Restart=no ArcLevelMaxStep=0.0 MaxStepRatio=100 MaxShrinkage=1.0e-5 ArcMaxStep=0.0 \
+ UseGear=no EnvIntegOrder=1 EnvBandwidth=1 EnvWarnPoorFit=no EnvUsePoorFit=no \
+ SweepVar="time" DevOpPtLevel=0 UseInFile=no UseOutFile=no UseKrylov=0 \
+ ConvMode=2 EnvFitDisableCache=no SweepPlan="Env1_stim" OutputPlan="Env1_Output" SaveToDataset=no 
+
+OutputPlan:Env1_Output \
+       Type="Output" \
+       UseNodeNestLevel=yes \
+       NodeNestLevel=2 \
+       UseEquationNestLevel=yes \
+       EquationNestLevel=2 \
+       UseSavedEquationNestLevel=yes \
+       SavedEquationNestLevel=2 \
+       UseDeviceCurrentNestLevel=no \
+       DeviceCurrentNestLevel=0 \
+       DeviceCurrentDeviceType="All" \
+       DeviceCurrentSymSyntax=yes \
+       UseCurrentNestLevel=yes \
+       CurrentNestLevel=999 \
+       UseDeviceVoltageNestLevel=no \
+       DeviceVoltageNestLevel=0 \
+       DeviceVoltageDeviceType="All" 
+
+SweepPlan:Env1_stim Stop=2048/SymbolRate Step=tstep
+
+Tran:Env1_tran HB_Sol=1 SteadyState=1 StatusLevel=3 \
+ Freq[1]=IF_Freq \
+ Order[1]=1 \
+ OutputPlan="Env1_Output"
+
+Component:tahb_Env1 Module="ATAHB" Type="ModelExtractor" Tran_Analysis="Env1_tran" HB_Analysis="Env1"
+
+#uselib "ckt" , "VtLFSR_DT"
+VtLFSR_DT:SRC1  N__14 N__7 Vlow=-2*V_peak Vhigh=2*V_peak Rate=SymbolRate Delay=0 nsec Taps=bin("10001100001110010") Seed=bin("10111100101110010") Rout=1 Ohm 
+#uselib "ckt" , "PhaseShift"
+PhaseShift:PS1  N__6 N__16 Phase=90 PhaseSlope=0. RTConj=0 ZRef=50 Ohm 
+Mixer:MIX1  N__18 N__9 N__6 SideBand=1 ConvGain=dbpolar(0,0) S11=polar(0,0) S22=polar(0,180) S33=0 Z1=50 Ohm Z2=50 Ohm Z3=50 Ohm GainCompType=0 ReferToInput=0 GainCompSat=5.0 dB GainComp=1.0 dB 
+Port:PORT1  N__16 0 Num=1 Z=50 Ohm P[1]=10 mW Freq[1]=IF_Freq    Noise=yes Pac=polar(dbmtow(0),0) 
+#uselib "sml" , "VSum"
+VSum:SUM1  N__9 N__12 Vout 
+
+V_peak=1 V
+#uselib "ckt" , "VtLFSR_DT"
+VtLFSR_DT:SRC2  N__7 0 Vlow=-V_peak Vhigh=V_peak Rate=SymbolRate Delay=0 nsec Taps=bin("11110011001110001") Seed=bin("00001110110011100") Rout=1 Ohm 
+#uselib "ckt" , "VtLFSR_DT"
+VtLFSR_DT:SRC3  N__5 N__19 Vlow=-2*V_peak Vhigh=2*V_peak Rate=SymbolRate Delay=0 nsec Taps=bin("11100010001100001") Seed=bin("11000011110001110") Rout=1 Ohm 
+#uselib "ckt" , "VtLFSR_DT"
+VtLFSR_DT:SRC4  N__19 0 Vlow=-V_peak Vhigh=V_peak Rate=SymbolRate Delay=0 nsec Taps=bin("01001110001100110") Seed=bin("00111001100111000") Rout=1 Ohm 
+Mixer:MIX2  N__10 N__12 N__16 SideBand=1 ConvGain=dbpolar(0,0) S11=polar(0,0) S22=polar(0,180) S33=0 Z1=50 Ohm Z2=50 Ohm Z3=50 Ohm GainCompType=0 ReferToInput=0 GainCompSat=5.0 dB GainComp=1.0 dB 
+#uselib "ckt" , "LPF_RaisedCos"
+LPF_RaisedCos:LPF2  N__5 N__10 Alpha=0.35 SymbolRate=SymbolRate DelaySymbols=5 Exponent=1 DutyCycle=100 SincE=0 Gain=1.0 Zout=50 Ohm WindowType=0 
+#uselib "ckt" , "LPF_RaisedCos"
+LPF_RaisedCos:LPF1  N__14 N__18 Alpha=0.35 SymbolRate=SymbolRate DelaySymbols=5 Exponent=1 DutyCycle=100 SincE=0 Gain=1.0 Zout=50 Ohm WindowType=0 

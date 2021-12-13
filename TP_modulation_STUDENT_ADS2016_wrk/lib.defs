@@ -1,0 +1,4 @@
+INCLUDE $HPEESOF_DIR/oalibs/analog_rf.defs
+INCLUDE $HPEESOF_DIR/oalibs/dsp.defs
+DEFINE TP_modulation_STUDENT_2012_lib TP_modulation_STUDENT_2012_lib
+ASSIGN TP_modulation_STUDENT_2012_lib libMode shared
